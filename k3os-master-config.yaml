@@ -1,0 +1,14 @@
+ssh_authorized_keys:
+- github:ojhughes
+hostname: k3os-master.local
+
+k3os:
+  data_sources:
+  - cdrom
+  k3s_args:
+  - server
+  modules:
+  - kvm
+#  taints:
+#    - "node-role.kubernetes.io/master:NoSchedule-"
+#    - "node-role.kubernetes.io/master:NoExecute-"

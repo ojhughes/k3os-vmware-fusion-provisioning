@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "password": "Rancher1",
+    "iso_url": "https://github.com/rancher/k3os/releases/download/v0.8.0/k3os-amd64.iso",
+    "iso_checksum": "67e412cdd8700ade2c9573f0abbc5fc1"
+  },
+  "builders": [{
+    "type": "vmware-iso",
+    "name": "k3os-master",
+    "boot_wait": "30s",
+    "boot_command": [
+      "rancher",
+      "<enter>",
+      "sudo k3os install",
+      "<enter>",
+      "<enter>",
+      "y",
+      "<enter>",
+      "https://raw.githubusercontent.com/ojhughes/k3os-vmware-fusion-provisioning/master/k3os-master-config.yaml",
+      "<enter>",
+      "y",
+      "<enter>"
+    ],
+    "guest_os_type": "ubuntu64Guest",
+    "iso_url": "{{user `iso_url`}}",
+    "iso_checksum": "{{user `iso_checksum`}}",
+    "iso_checksum_type": "md5",
+    "ssh_username": "rancher",
+    "ssh_private_key_file": "~/.ssh/id_rsa",
+    "ssh_wait_timeout":"1000s",
+    "disk_size": "30000",
+    "shutdown_command": "sudo poweroff",
+    "cpus": 1,
+    "cores": 2,
+    "memory": 4096,
+    "tools_upload_flavor": "linux",
+    "version": 16
+
+  }
+]
+}
+

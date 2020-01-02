@@ -1,0 +1,11 @@
+ssh_authorized_keys:
+- github:ojhughes
+hostname: k3os-node.local
+k3os:
+  data_sources:
+  - cdrom
+  k3s_args:
+  - agent
+  modules:
+  - kvm
+  server_url: https://k3os-master.local:6443
